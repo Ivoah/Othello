@@ -5,7 +5,6 @@ class Random:
         self.color = color
 
     def getMove(self, board):
-        board.printBoard()
         return random.choice(list(board.validMoves(self.color)))
 
 class MiniMax:
@@ -17,7 +16,6 @@ class MiniMax:
         return self
 
     def getMove(self, board):
-        board.printBoard()
         v = float('-inf')
         maxMoves = []
         for move in board.validMoves(self.color):

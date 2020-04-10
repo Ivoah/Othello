@@ -90,3 +90,9 @@ class Board:
         ), end='')
         print('  └───┴───┴───┴───┴───┴───┴───┴───┘')
         print(f'{BLACK}: {self.score(BLACK)}, {WHITE}: {self.score(WHITE)}')
+
+    def printMoves(self, color):
+        moves = self.validMoves(color)
+        for move in moves: self[move] = '?'
+        self.printBoard()
+        for move in moves: self[move] = ' '

@@ -6,9 +6,6 @@ class Human:
 
     def getMove(self, board):
         moves = board.validMoves(self.color)
-        for move in moves: board[move] = '?'
-        board.printBoard()
-        for move in moves: board[move] = ' '
         while True:
             move = input(f'{self.color} turn, enter move: ')
             move = v2(
