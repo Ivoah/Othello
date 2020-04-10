@@ -27,7 +27,5 @@ class Othello:
                 print('It\'s a tie!')
 
 if __name__ == '__main__':
-    for i in range(100):
-        game = Othello(MiniMax(3), Random)
-        game.play(verbose=False)
-        print(f'{BLACK}: {game.board.score(BLACK)}, {WHITE}: {game.board.score(WHITE)}')
+    game = Othello(MiniMax(3), Random)
+    game.play()
