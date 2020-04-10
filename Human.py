@@ -1,3 +1,5 @@
+# TODO: Comments
+
 from Board import v2
 
 class Human:

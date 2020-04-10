@@ -1,3 +1,5 @@
+# TODO: Comments
+
 import dataclasses
 
 BLACK = '●'

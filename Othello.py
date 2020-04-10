@@ -1,3 +1,5 @@
+# TODO: Comments
+
 from Board import Board, BLACK, WHITE
 from Human import Human
 from AI import Random, MiniMax
@@ -27,5 +29,6 @@ class Othello:
                 print('It\'s a tie!')
 
 if __name__ == '__main__':
+    # Change Random to Human to play against AI
     game = Othello(MiniMax(3), Random)
     game.play()

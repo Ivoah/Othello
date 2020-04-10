@@ -1,3 +1,5 @@
+# TODO: Comments
+
 import random
 
 class Random:
