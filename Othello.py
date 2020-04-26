@@ -1,8 +1,6 @@
 # TODO: Comments
 
 from Board import Board, BLACK, WHITE
-from Human import Human
-from AI import Random, MiniMax
 
 class Othello:
     def __init__(self, player1, player2):
@@ -29,6 +27,14 @@ class Othello:
                 print('It\'s a tie!')
 
 if __name__ == '__main__':
+    import sys
+    import time
+    from Human import Human
+    from AI import Random, MiniMax, AlphaBeta
+    
     # Change Random to Human to play against AI
-    game = Othello(MiniMax(3), Random)
-    game.play()
+    game = Othello(AlphaBeta(3), Random)
+    t0 = time.time()
+    game.play(verbose=True)
+    duration = time.time() - t0
+    print(f'{duration:.2f}', game.board.score(BLACK), game.board.score(WHITE), game.board.score(BLACK) > game.board.score(WHITE), file=sys.stderr)
