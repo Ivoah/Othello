@@ -11,6 +11,7 @@ class Othello:
         }
 
     def play(self, turn=BLACK, verbose=True):
+        # Keep playing while there are still valid moves
         while self.board.validMoves(turn):
             if verbose: self.board.printMoves(turn)
             move = self.players[turn].getMove(self.board)

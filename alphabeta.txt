@@ -1,3 +1,4 @@
+seconds, black score, white score, did black win?
 19.25 20 44 False
 19.18 38 26 True
 24.70 26 38 False

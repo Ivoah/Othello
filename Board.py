@@ -5,6 +5,7 @@ import dataclasses
 BLACK = '●'
 WHITE = '○'
 
+# Make passing locations around
 @dataclasses.dataclass(frozen=True)
 class v2:
     r: int
@@ -26,6 +27,7 @@ class v2:
             self.r + other.r,
             self.c + other.c)
 
+# Compass directions
 v2.NW = v2(-1, -1)
 v2.N  = v2(-1,  0)
 v2.NE = v2(-1,  1)
@@ -36,6 +38,8 @@ v2.S  = v2( 1,  0)
 v2.SE = v2( 1,  1)
 
 COMPASS = [v2.NW, v2.N, v2.NE, v2.W, v2.E, v2.SW, v2.S, v2.SE]
+
+# Every board position
 ALL_CELLS = [v2(r, c) for r in range(8) for c in range(8)]
 
 class Board:
@@ -44,12 +48,14 @@ class Board:
         self.board[3][3:5] = [BLACK, WHITE]
         self.board[4][3:5] = [WHITE, BLACK]
 
+    # Shortcut to make getting and setting board positions easier
     def __getitem__(self, pos):
         return self.board[pos.r][pos.c]
 
     def __setitem__(self, pos, color):
         self.board[pos.r][pos.c] = color
 
+    # Find straight line of pieces from location
     def _straight_line(self, pos, dir):
         if not (pos + dir).within((0, 7), (0, 7)) or self[pos] == ' ':
             return []
@@ -58,11 +64,13 @@ class Board:
         else:
             return [pos] + self._straight_line(pos + dir, dir)
 
+    # Copy board
     def copy(self):
         new_board = Board()
         new_board.board = [[self[v2(r, c)] for c in range(8)] for r in range(8)]
         return new_board
 
+    # Get all valid moves for player
     def validMoves(self, color):
         moves = set()
         for pos in ALL_CELLS:
@@ -73,6 +81,7 @@ class Board:
                         moves.add(pos)
         return moves
 
+    # Make a move and flip necessary pieces
     def makeMove(self, pos, color):
         self[pos] = color
         for dir in COMPASS:
@@ -80,6 +89,7 @@ class Board:
             if line and self[line[-1] + dir] == color:
                 for p in line: self[p] = color
 
+    # Get score for player, used for minimax heuristic
     def score(self, color):
         return sum(self[pos] == color for pos in ALL_CELLS)
 

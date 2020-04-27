@@ -2,6 +2,7 @@
 
 from Board import v2
 
+# Let a human play the game
 class Human:
     def __init__(self, color):
         self.color = color

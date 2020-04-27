@@ -1,9 +1,8 @@
-# TODO: Comments
-
 import random
 
 from Board import BLACK, WHITE
 
+# Random player just makes random valid moves
 class Random:
     def __init__(self, color):
         self.color = color
@@ -11,6 +10,7 @@ class Random:
     def getMove(self, board):
         return random.choice(list(board.validMoves(self.color)))
 
+# Bog standard minimax implementation
 class MiniMax:
     def __init__(self, difficulty):
         self.difficulty = difficulty
@@ -51,6 +51,7 @@ class MiniMax:
             v = max(v, self.min(new_board, depth - 1))
         return v
 
+# minimax with alpha beta pruning, mostly taken from wikipedia
 class AlphaBeta(MiniMax):
     def getMove(self, board):
         α, β = float('-inf'), float('+inf')

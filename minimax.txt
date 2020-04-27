@@ -1,3 +1,4 @@
+seconds, black score, white score, did black win?
 23.81 50 10 True
 43.54 50 14 True
 62.49 46 17 True
