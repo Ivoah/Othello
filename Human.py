@@ -1,5 +1,3 @@
-# TODO: Comments
-
 from Board import v2
 
 # Let a human play the game

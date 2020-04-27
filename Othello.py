@@ -1,5 +1,3 @@
-# TODO: Comments
-
 from Board import Board, BLACK, WHITE
 
 class Othello:
